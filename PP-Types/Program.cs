@@ -1,6 +1,4 @@
-﻿// Write required code.
-
-// Data - do not change it in code!
+﻿
 string[] names = {
     "Mickey Mouse", "Minnie Mouse", "Donald Duck", "Goofy", "Pluto", "Daisy Duck", "Simba", "Nala", 
     "Timon", "Pumbaa", "Mufasa", "Ariel", "Flounder", "Sebastian", "Ursula", "Belle", "Beast", "Gaston", 
@@ -15,26 +13,51 @@ string[] names = {
 void PrintGroups(string[] t, int perLine)
 {
 
-    // Write required code.
+    for (int i = 0; i < t.Length; i++)
+    {
+        Console.Write(t[i]);
 
+        if (i == t.Length - 1)
+        {
+            Console.Write(".");  
+        }
+        else if ((i + 1) % perLine == 0)
+        {
+            Console.WriteLine(",");  
+        }
+        else
+        {
+            Console.Write(", ");  
+        }
+    }
+    Console.WriteLine(); 
 }
-
-
-// Print all array elements in *perLine* columns.
-// Each column must have given *width* (number of chars).
-// Columns should be separated by "| ".
-// If element is too long it should be trimmed.
 
 void PrintColumns(string[] t, int perLine, int width)
 {
 
-    // Write required code.
+    for (int i = 0; i < t.Length; i++)
+    {
+        string element = t[i].Length > width ? t[i].Substring(0, width) : t[i];
+
+        Console.Write(element.PadRight(width));
+
+        if ((i + 1) % perLine != 0)
+        {
+            Console.Write(" | ");
+        }
+        else
+        {
+            Console.WriteLine();
+        }
+    }
+    if (t.Length % perLine != 0)
+    {
+        Console.WriteLine();
+    }
 
 }
 
-
-// Test how your functions work. 
-// You can temprary comment some lines not needed for current testing.
 
 
 Console.WriteLine("\nPrintGroups(names, 3):\n");
